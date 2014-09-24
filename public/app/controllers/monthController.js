@@ -4,6 +4,7 @@
 	
 	var monthController = function ($scope, $log, $http, $routeParams){
 
+		$scope.sortBy = 'date';
 		$scope.month = [];
 		$scope.total = 0;
 
@@ -29,7 +30,7 @@
 		        
 		        d[i].tot = parseFloat(d[i].tot).toFixed(2);
 
-		        $scope.total += d[i].tot;
+		        $scope.total += parseFloat(d[i].tot);
 
 		        $scope.month.push(d[i]);
 		    }
