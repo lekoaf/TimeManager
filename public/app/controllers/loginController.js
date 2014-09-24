@@ -1,5 +1,7 @@
 (function (){
 
+	var injections = ['$scope', '$log', '$http', '$location'];
+	
 	var loginController = function ($scope, $log, $http, $location){
 		$scope.error = "";
 
@@ -13,7 +15,7 @@
 		}
 	};
 
-	loginController.$inject = ['$scope', '$log', '$http', '$location'];
+	loginController.$inject = injections;
 	angular.module('timeManager').controller('loginController', loginController);
 
 })();

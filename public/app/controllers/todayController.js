@@ -1,6 +1,8 @@
 (function (){
 
-	var todayController = function ($scope, $log, $http, $location){
+	var injections = ['$scope', '$log', '$http'];
+
+	var todayController = function ($scope, $log, $http){
 
 		$scope.total = {};
 
@@ -45,7 +47,7 @@
 		checkToday();
 	};
 
-	todayController.$inject = ['$scope', '$log', '$http', '$location'];
+	todayController.$inject = injections;
 	angular.module('timeManager').controller('todayController', todayController);
 
 })();
