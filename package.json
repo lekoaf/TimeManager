@@ -1,0 +1,14 @@
+{
+  "name": "tidrapport",
+  "version": "0.0.2",
+  "description": "Tidrapport-app för Skärmklart",
+  "dependencies": {
+    "mongodb": "*",
+    "express": "*",
+    "mongoose": "*",
+    "body-parser": "~1.4.3",
+    "express-session": "*",
+    "moment": "^2.7.0",
+    "msexcel-builder": "*"
+  }
+}
