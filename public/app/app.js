@@ -12,6 +12,10 @@
 				controller: 'signupController',
 				templateUrl: 'app/views/signup.html'
 			})
+			.when('/today', {
+				controller: 'todayController',
+				templateUrl: 'app/views/today.html'
+			})
 			.otherwise({redirectTo: '/'});
 	});
 
