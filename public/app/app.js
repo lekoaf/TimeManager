@@ -16,6 +16,10 @@
 				controller: 'todayController',
 				templateUrl: 'app/views/today.html'
 			})
+			.when('/month/:m', {
+				controller: 'monthController',
+				templateUrl: 'app/views/month.html'
+			})
 			.otherwise({redirectTo: '/'});
 	});
 
