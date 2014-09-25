@@ -1,8 +1,7 @@
 (function (){
 
-	var ctrl = angular.module('timeManager');
-
-	ctrl.controller('todaycController', ['$scope', '$log', '$http', 
+	angular.module('timeManager')
+	.controller('todayController', ['$scope', '$log', '$http', 
 		function ($scope, $log, $http){
 		$scope.total = {};
 

@@ -1,8 +1,7 @@
 (function (){
 
-	var ctrl = angular.module('timeManager');
-
-	ctrl.controller('settingsController', ['$scope', '$log', '$http', 
+	angular.module('timeManager')
+	.controller('settingsController', ['$scope', '$log', '$http', 
 		function ($scope, $log, $http){
 		$scope.settings = {};
 

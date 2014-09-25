@@ -1,9 +1,8 @@
 (function (){
 
-	var ctrl = angular.module('timeManager');
-
-	ctrl.controller('monthController', ['$scope', '$log', '$http', '$routeParams', 
-		function ($scope $log, $http, $routeParams){
+	angular.module('timeManager')
+	.controller('monthController', ['$scope', '$log', '$http', '$routeParams', 
+		function ($scope, $log, $http, $routeParams){
 		$scope.sortBy = '-date';
 		$scope.month = [];
 		$scope.total = 0;

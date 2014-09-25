@@ -1,8 +1,7 @@
 (function (){
 
-	var ctrl = angular.module('timeManager');
-
-	ctrl.controller('signupController', ['$scope', '$log', '$http', '$location',
+	angular.module('timeManager')
+	.controller('signupController', ['$scope', '$log', '$http', '$location',
 		function ($scope, $log, $http){
 		$scope.error = "";
 
