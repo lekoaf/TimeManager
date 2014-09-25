@@ -1,8 +1,9 @@
 (function (){
 
-	var injections = ['$scope', '$log', '$http'];
+	var ctrl = angular.module('timeManager');
 
-	var settingsController = function ($scope, $log, $http){
+	ctrl.controller('settingsController', ['$scope', '$log', '$http', 
+		function ($scope, $log, $http){
 		$scope.settings = {};
 
 		$scope.setSettings = function (settings){
@@ -30,10 +31,6 @@
 		}
 
 		getSettings();
-	};
 
-	settingsController.$inject = injections;
-
-	angular.module('timeManager').controller('settingsController', settingsController);
-
+	}]);
 })();

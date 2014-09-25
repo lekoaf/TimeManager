@@ -1,9 +1,9 @@
 (function (){
 
-	var injections = ['$scope', '$log', '$http', '$routeParams'];
-	
-	var monthController = function ($scope, $log, $http, $routeParams){
+	var ctrl = angular.module('timeManager');
 
+	ctrl.controller('monthController', ['$scope', '$log', '$http', '$routeParams', 
+		function ($scope $log, $http, $routeParams){
 		$scope.sortBy = '-date';
 		$scope.month = [];
 		$scope.total = 0;
@@ -42,9 +42,5 @@
 		}).error(function (data, status, header, config){
 			$scope.error = data.error;
 		});
-	};
-
-	monthController.$inject = injections;
-	angular.module('timeManager').controller('monthController', monthController);
-
+	}]);
 })();

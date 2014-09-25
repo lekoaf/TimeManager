@@ -1,8 +1,9 @@
 (function (){
 
-	var injections = ['$scope', '$log', '$http', '$location'];
-	
-	var signupController = function ($scope, $log, $http, $location){
+	var ctrl = angular.module('timeManager');
+
+	ctrl.controller('signupController', ['$scope', '$log', '$http', '$location',
+		function ($scope, $log, $http){
 		$scope.error = "";
 
 		$scope.signupSubmit = function(user){
@@ -13,9 +14,6 @@
 				$scope.error = data.error;
 			});
 		}
-	};
-
-	signupController.$inject = injections;
-	angular.module('timeManager').controller('signupController', signupController);
+	}]);
 
 })();
