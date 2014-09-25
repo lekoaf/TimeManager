@@ -19,7 +19,7 @@
 
 		var getSettings = function (){
 			$http.get('/settings').success(function (data){
-
+			
 				$scope.settings = data;
 
 			}).error(function (data, status, header, config){

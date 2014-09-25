@@ -24,6 +24,10 @@
 				controller: 'settingsController',
 				templateUrl: 'app/views/settings.html'
 			})
+			.when('/excel', {
+				controller: 'excelController',
+				templateUrl: 'app/views/excel.html'
+			})
 			.otherwise({redirectTo: '/'});
 	});
 
