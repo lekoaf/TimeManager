@@ -28,6 +28,10 @@
 				controller: 'excelController',
 				templateUrl: 'app/views/excel.html'
 			})
+			.when('/admin', {
+				controller: 'adminController',
+				templateUrl: 'app/views/admin.html'
+			})
 			.otherwise({redirectTo: '/'});
 	});
 

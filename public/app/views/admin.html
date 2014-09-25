@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+	  <table class="table table-hover table-striped table-condensed">
+	  	<thead>
+	  		<tr>
+	  			<td>
+	  			<b>Senast inloggad</b>
+	  			</td>
+	  			<td>
+	  			<b>Förnamn</b>
+	  			</td>
+	  			<td>
+	  			<b>Efternamn</b>
+	  			</td>
+	  			<td>
+	  			<b>Epost</b>
+	  			</td>
+	  			<td>
+	  			<b>Rättigheter</b>
+	  			</td>
+	  			<td>
+	  			<b>Rapport</b>
+	  			</td>
+	  		</tr>
+	  	</thead>
+	  	<tbody>
+	  		<tr ng-repeat="user in users | filter: userFilter">
+	  			<td>{{ user.statistics.lastlogin | date: 'yyyy-MM-dd' }}</td>
+	  			<td>{{ user.fname }}</td>
+	  			<td>{{ user.lname }}</td>
+	  			<td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+	  			<td ng-switch on="user.isme">
+					<button ng-switch-when="true" class="btn disabled btn-default btn-xs" ng-click="addOrRemoveAdmin(user._id, 'rm')">Ta bort admin</button>
+					<button ng-switch-when="undefined" class="btn btn-primary btn-xs rmadmin" ng-click="addOrRemoveAdmin(user._id, 'rm')">Ta bort admin</button>
+					<button ng-switch-default class="btn btn-primary btn-xs mkadmin" ng-click="addOrRemoveAdmin(user._id, 'mk')">Gör admin</button>
+	  			</td>
+	  			<td><a href="#/adminreport/{{ user._id }}" class="btn btn-primary btn-xs rapport" data-userid="'+d[i]._id+'">Report</a></td>
+	  		</tr>
+	  </tbody>
+	  </table>
+	  <div class="form-group adminfilter">
+	  	<input type="text" class="form-control" ng-model="userFilter.email" placeholder="Filter (Email)"/>
+	</div>
+  </div>
+</div>
