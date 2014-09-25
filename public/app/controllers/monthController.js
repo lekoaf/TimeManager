@@ -4,7 +4,7 @@
 	
 	var monthController = function ($scope, $log, $http, $routeParams){
 
-		$scope.sortBy = 'date';
+		$scope.sortBy = '-date';
 		$scope.month = [];
 		$scope.total = 0;
 
