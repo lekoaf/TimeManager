@@ -19,6 +19,10 @@
 			.when('/month/:m', {
 				controller: 'monthController',
 				templateUrl: 'app/views/month.html'
+			}).
+			when('/settings', {
+				controller: 'settingsController',
+				templateUrl: 'app/views/settings.html'
 			})
 			.otherwise({redirectTo: '/'});
 	});
