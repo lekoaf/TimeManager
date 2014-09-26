@@ -154,6 +154,22 @@ app.post('/login', function (req, res){
 	});
 });
 
+app.get('/checkUser', function (req, res){
+	if (!req.session && !req.session.uid){
+		return res.send(400);
+	}
+
+	User.findOne({_id: req.session.uid}, {isadmin: 1}, function (err, user){
+		if (err){
+			console.log(err);
+			return res.send(500);
+		}
+
+		return res.json({isadmin: user.isadmin});
+
+	});
+});
+
 app.delete('/login', function (req, res){
 	console.log('delete /login');
 
