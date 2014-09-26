@@ -32,6 +32,10 @@
 				controller: 'adminController',
 				templateUrl: 'app/views/admin.html'
 			})
+			.when('/adminreport/:uid', {
+				controller: 'adminReportController',
+				templateUrl: 'app/views/adminreport.html'
+			})
 			.otherwise({redirectTo: '/'});
 	});
 

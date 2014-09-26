@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+  	<h4>Report for {{ reportName }} - {{ theDate | date: 'yyyy-MM-dd HH:mm' }}</h4>
+	  <table class="table table-striped table-hover table-condensed">
+	  	<thead>
+	  		<tr>
+	  			<td ng-click="doSort('date')">
+	  			<b>Date</b>
+	  			</td>
+	  			<td>
+	  			<b>In</b>
+	  			</td>
+	  			<td>
+	  			<b>Lunch (min)</b>
+	  			</td>
+	  			<td>
+	  			<b>Out</b>
+	  			</td>
+	  			<td ng-click="doSort('tot')">
+	  			<b>Hours worked</b>
+	  			</td>
+	  		</tr>
+	  	</thead>
+	  	<tbody>
+	  	<tr ng-repeat="day in month | orderBy:sortBy:reverse">
+			<td><b>{{ day.date | date: 'yyyy-MM-dd' }}</b></td>
+			<td>{{ day.inh }}.{{ day.inm }} </td>
+			<td>{{ day.lunch }} </td>
+			<td>{{ day.outh }}.{{ day.outm }} </td>
+			<td><b>{{ day.tot }}</b></td>
+	  	</tr>
+	  	<tr>
+	  		<td></td>
+	  		<td></td>
+	  		<td></td>
+	  		<td><b>Total:</b></td>
+	  		<td><b>{{ total }}</b></td>
+	  	</tr>
+	  </tbody>
+	  </table>
+  </div>
+</div>
