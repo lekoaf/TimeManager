@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
-	<title>Skärmklart AB - Tidrapportering</title>
+	<title>Skärmklart - TimeManager v2.0</title>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -14,18 +14,18 @@
 		<div class="row">
 
 		<div class="col-md-10 header">
-		<img src="img/skarmklart.png" />TimeManager v 2.0
+		<img src="img/skarmklart.png" />TimeManager v2.0
 		</div>
 			<div class="col-md-10 header">
 				<ul class="nav nav-tabs" ng-controller="navbarController">
-					<li ng-class="{active: isActive('/')}"><a href="#/"><i class="fa fa-sign-in"></i> Login</a></li>
-			        <li ng-class="{active: isActive('/signup')}"><a href="#/signup"><i class="fa fa-user"></i><i class="fa fa-plus"></i> Signup</a></li>
-			        <li ng-class="{active: isActive('/today')}"><a href="#/today"><i class="fa fa-clock-o"></i> Today</a></li>
-			        <li ng-class="{active: isActive('/month/this')}"><a href="#/month/this"><i class="fa fa-clock-o"></i> This Month</a></li>
-			        <li ng-class="{active: isActive('/month/last')}"><a href="#/month/last"><i class="fa fa-clock-o"></i> Last Month</a></li>
-			        <li ng-class="{active: isActive('/excel')}"><a href="#/excel"><i class="fa fa-file-excel-o"></i> Excel report</a></li>
-			        <li ng-class="{active: isActive('/settings')}"><a href="#/settings"><i class="fa fa-cog"></i> Settings</a></li>
-			        <li ng-class="{active: isActive('/admin')}"><a href="#/admin"><i class="fa fa-user"></i> Admin</a></li>
+					<li ng-hide="isLoggedinFn()" ng-class="{active: isActive('/')}"><a href="#/"><i class="fa fa-sign-in"></i> Login</a></li>
+			        <li ng-hide="isLoggedinFn()" ng-class="{active: isActive('/signup')}"><a href="#/signup"><i class="fa fa-user"></i><i class="fa fa-plus"></i> Signup</a></li>
+			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/today')}"><a href="#/today"><i class="fa fa-clock-o"></i> Today</a></li>
+			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/month/this')}"><a href="#/month/this"><i class="fa fa-clock-o"></i> This Month</a></li>
+			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/month/last')}"><a href="#/month/last"><i class="fa fa-clock-o"></i> Last Month</a></li>
+			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/excel')}"><a href="#/excel"><i class="fa fa-file-excel-o"></i> Excel report</a></li>
+			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/settings')}"><a href="#/settings"><i class="fa fa-cog"></i> Settings</a></li>
+			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/admin')}"><a href="#/admin"><i class="fa fa-user"></i> Admin</a></li>
 				</ul>
 				<div ng-view></div>
 			</div>

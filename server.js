@@ -148,9 +148,15 @@ app.post('/login', function (req, res){
 		req.session.expires = moment().add(1,'days').valueOf();
 		req.session.uid = user._id;
 		req.session.email = user.email;
-		req.session.isadmin = user.isadmin;
+		if (user.isadmin){
+			req.session.isadmin = true;
+		}
+		else{
+			req.session.isadmin = false;
+		}
+		
 
-		return res.json({isadmin: user.isadmin});
+		return res.json({ok:true});
 	});
 });
 
@@ -163,6 +169,10 @@ app.get('/checkUser', function (req, res){
 		if (err){
 			console.log(err);
 			return res.send(500);
+		}
+
+		if (!user){
+			return res.json({isadmin: false});
 		}
 
 		return res.json({isadmin: user.isadmin});
