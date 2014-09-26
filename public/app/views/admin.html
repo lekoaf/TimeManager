@@ -29,12 +29,11 @@
 	  			<td>{{ user.fname }}</td>
 	  			<td>{{ user.lname }}</td>
 	  			<td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
-	  			<td ng-switch on="user.isme">
-					<button ng-switch-when="true" class="btn disabled btn-default btn-xs" ng-click="addOrRemoveAdmin(user._id, 'rm')">Ta bort admin</button>
-					<button ng-switch-when="undefined" class="btn btn-primary btn-xs rmadmin" ng-click="addOrRemoveAdmin(user._id, 'rm')">Ta bort admin</button>
-					<button ng-switch-default class="btn btn-primary btn-xs mkadmin" ng-click="addOrRemoveAdmin(user._id, 'mk')">Gör admin</button>
+	  			<td ng-switch on="user.isadmin">
+					<button ng-switch-when="true" ng-class="{disabled:user.isme}" class="btn btn-default btn-xs" ng-click="addOrRemoveAdmin(user._id, 'rm')">Ta bort admin</button>
+					<button ng-switch-default class="btn btn-primary btn-xs" ng-click="addOrRemoveAdmin(user._id, 'mk')">Gör admin</button>
 	  			</td>
-	  			<td><a href="#/adminreport/{{ user._id }}" class="btn btn-primary btn-xs rapport" data-userid="'+d[i]._id+'">Report</a></td>
+	  			<td><a href="#/adminreport/{{ user._id }}" class="btn btn-primary btn-xs">Report</a></td>
 	  		</tr>
 	  </tbody>
 	  </table>

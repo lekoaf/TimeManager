@@ -6,6 +6,11 @@
 
 		$scope.users = [];
 
+		$scope.doSort = function (propName){
+			$scope.sortBy = propName;
+	        $scope.reverse = !$scope.reverse;
+		};
+
 		$scope.addOrRemoveAdmin = function (uid, type){
 			$http.put('/adminpermission/'+uid+'/'+type).success(function (data){
 				$log.log(data);
