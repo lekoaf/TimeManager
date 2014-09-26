@@ -3,7 +3,7 @@
 	  <table class="table table-hover table-striped table-condensed">
 	  	<thead>
 	  		<tr>
-	  			<td>
+	  			<td ng-click="doSort('statistics.lastlogin')">
 	  			<b>Senast inloggad</b>
 	  			</td>
 	  			<td>
@@ -12,7 +12,7 @@
 	  			<td>
 	  			<b>Efternamn</b>
 	  			</td>
-	  			<td>
+	  			<td ng-click="doSort('email')">
 	  			<b>Epost</b>
 	  			</td>
 	  			<td>
@@ -24,14 +24,14 @@
 	  		</tr>
 	  	</thead>
 	  	<tbody>
-	  		<tr ng-repeat="user in users | filter: userFilter">
+	  		<tr ng-repeat="user in users | filter: userFilter | orderBy:sortBy:reverse">
 	  			<td>{{ user.statistics.lastlogin | date: 'yyyy-MM-dd' }}</td>
 	  			<td>{{ user.fname }}</td>
 	  			<td>{{ user.lname }}</td>
 	  			<td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
 	  			<td ng-switch on="user.isadmin">
-					<button ng-switch-when="true" ng-class="{disabled:user.isme}" class="btn btn-default btn-xs" ng-click="addOrRemoveAdmin(user._id, 'rm')">Ta bort admin</button>
-					<button ng-switch-default class="btn btn-primary btn-xs" ng-click="addOrRemoveAdmin(user._id, 'mk')">Gör admin</button>
+					<button ng-switch-when="true" ng-class="{disabled:user.isme}" class="btn btn-default btn-xs" ng-click="toggleAdmin(user)">Ta bort admin</button>
+					<button ng-switch-default class="btn btn-primary btn-xs" ng-click="toggleAdmin(user)">Gör admin</button>
 	  			</td>
 	  			<td><a href="#/adminreport/{{ user._id }}" class="btn btn-primary btn-xs">Report</a></td>
 	  		</tr>
