@@ -10,15 +10,15 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/animations.css">
 </head>
-<body>
+<body ng-controller="navbarController">
 	<div class="container">
 		<div class="row">
 
 		<div class="col-md-10 header">
-		<img src="img/skarmklart.png" />TimeManager v2.0
+		<img src="img/skarmklart.png" />{{ appSettings.title }} v {{ appSettings.version }}
 		</div>
 			<div class="col-md-10 header">
-				<ul class="nav nav-tabs" ng-controller="navbarController">
+				<ul class="nav nav-tabs">
 					<li ng-hide="isLoggedinFn()" ng-class="{active: isActive('/')}"><a href="#/"><i class="fa fa-sign-in"></i> Login</a></li>
 			        <li ng-hide="isLoggedinFn()" ng-class="{active: isActive('/signup')}"><a href="#/signup"><i class="fa fa-user"></i><i class="fa fa-plus"></i> Signup</a></li>
 			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/today')}"><a href="#/today"><i class="fa fa-clock-o"></i> Today</a></li>
@@ -26,7 +26,7 @@
 			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/month/last')}"><a href="#/month/last"><i class="fa fa-clock-o"></i> Last Month</a></li>
 			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/excel')}"><a href="#/excel"><i class="fa fa-file-excel-o"></i> Excel report</a></li>
 			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/settings')}"><a href="#/settings"><i class="fa fa-cog"></i> Settings</a></li>
-			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/admin')}"><a href="#/admin"><i class="fa fa-user"></i> Admin</a></li>
+			        <li ng-show="appSettings.isadmin" ng-class="{active: isActive('/admin')}"><a href="#/admin"><i class="fa fa-user"></i> Admin</a></li>
 				</ul>
 				<div ng-view class="slide-animation"></div>
 			</div>
@@ -36,6 +36,7 @@
 <script src="app/core/angular.js"></script>
 <script src="app/core/angular-route.js"></script>
 <script src="app/core/angular-animate.js"></script>
+
 <script src="app/app.js"></script>
 <script src="app/services/ajaxFactory.js"></script>
 <script src="app/controllers/loginController.js"></script>
@@ -47,6 +48,7 @@
 <script src="app/controllers/adminController.js"></script>
 <script src="app/controllers/adminReportController.js"></script>
 <script src="app/controllers/navbarController.js"></script>
+<script src="app/services/values.js"></script>
 
 <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

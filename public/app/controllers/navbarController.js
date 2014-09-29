@@ -1,8 +1,9 @@
 (function (){
 
 	angular.module('timeManager')
-	.controller('navbarController', ['$scope', '$location', '$log', 
-		function ($scope, $location, $log){
+	.controller('navbarController', ['$scope', '$location', '$log', 'appSettings', 
+		function ($scope, $location, $log, appSettings){
+		$scope.appSettings = appSettings;
 
 		$scope.isActive = function (viewLocation) {
 	        return viewLocation === $location.path();

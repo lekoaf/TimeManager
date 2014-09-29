@@ -156,7 +156,7 @@ app.post('/login', function (req, res){
 		}
 		
 
-		return res.json({ok:true});
+		return res.json({isadmin:req.session.isadmin});
 	});
 });
 
@@ -297,7 +297,6 @@ app.get('/checktoday', function (req, res){
 
 app.get('/getmonth/:month', function (req, res){
 	console.log('get /getmonth/'+req.params.month);
-	console.log(req.session.email);
 
 	if (!req.session && !req.session.uid){
 		return res.send(400);
@@ -308,9 +307,6 @@ app.get('/getmonth/:month', function (req, res){
 	}
 
 	Time.find({uid: req.session.uid}).sort({_id: -1}).limit(65).exec(function (err, time){
-
-		console.log(time);
-
 		if (err){
 			console.log(err);
 			return res.send(500);
@@ -319,7 +315,6 @@ app.get('/getmonth/:month', function (req, res){
 
 		//Get correct data with months.module.
 		var data = months.months(req.params.month, time);
-		console.log(data);
 		return res.json(data);
 	});
 });

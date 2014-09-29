@@ -1,7 +1,6 @@
 var moment = require('moment');
 exports.months = function(month, time){
 	if (month == 'this'){
-		console.log('this');
 		var data = [];
 
 		for (var i = 0; i < time.length; i++){
@@ -15,7 +14,6 @@ exports.months = function(month, time){
 	}
 
 	if (month == 'last'){
-		console.log('last');
 		var data = [];
 
 		var beginningOfLastMonth = moment().subtract(1,'months').date(1).hour(0).minute(0).second(0);
