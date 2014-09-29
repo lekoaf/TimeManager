@@ -453,21 +453,11 @@ app.get('/excel/:type/:period', function (req, res){
 	});
 });
 
-app.get('/admin', function (req, res){
-	console.log('get /admin');
-
-	if (!req.session && !req.session.isadmin){
-		return res.send(400);
-	}
-
-	return res.sendfile('admin/index.html');
-});
-
 app.get('/adminusers', function (req, res){
 	console.log('get /adminuser');
 
-	if (!req.session && !req.session.isadmin){
-		return res.send(400);
+	if (!req.session || !req.session.isadmin){
+		return res.status(403).json({error: 'You are not admin!'});
 	}
 
     User.find({}, {fname: 1, lname: 1, email:1, isadmin: 1, statistics: 1}, function (err, user){
@@ -501,8 +491,8 @@ app.get('/adminusers', function (req, res){
 app.put('/adminpermission/:uid/:type', function (req, res){
 	console.log('put /adminpermission/'+req.params.uid+'/'+req.params.type);
 
-	if (!req.session && !req.session.isadmin){
-		return res.send(400);
+	if (!req.session || !req.session.isadmin){
+		return res.status(403).json({error: 'You are not admin!'});
 	}
 	if (!(req.params.type == 'mk' || req.params.type == 'rm')){
 		return res.send(400);
@@ -528,8 +518,8 @@ app.put('/adminpermission/:uid/:type', function (req, res){
 app.get('/adminreport/:uid', function (req, res){
 	console.log('get /adminreport/'+req.params.uid);
 
-	if (!req.session && !req.session.isadmin){
-		return res.send(400);
+	if (!req.session || !req.session.isadmin){
+		return res.status(403).json({error: 'You are not admin!'});
 	}
 
 	User.findOne({_id: req.params.uid}, {fname:1, lname:1, email:1}, function (err, user){
