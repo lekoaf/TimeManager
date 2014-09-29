@@ -6,7 +6,6 @@
 		$scope.error = "";
 
 		$scope.signupSubmit = function(user){
-
 			ajaxFactory.postSignup(user).success(function (data){
 				$log.log(data);
 				$location.path('/today');

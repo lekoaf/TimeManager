@@ -37,7 +37,6 @@
 		};
 
 		var checkToday = function (){
-
 			ajaxFactory.getCheckToday().success(function (data){
 				$log.log(data);
 				$scope.total = data.tot;
