@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
 	<div class="container">
@@ -27,7 +28,7 @@
 			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/settings')}"><a href="#/settings"><i class="fa fa-cog"></i> Settings</a></li>
 			        <li ng-show="isLoggedinFn()" ng-class="{active: isActive('/admin')}"><a href="#/admin"><i class="fa fa-user"></i> Admin</a></li>
 				</ul>
-				<div ng-view></div>
+				<div ng-view class="slide-animation"></div>
 			</div>
 		</div>
 	</div>
