@@ -4,22 +4,22 @@
 	  	<thead>
 	  		<tr>
 	  			<td ng-click="doSort('statistics.lastlogin')">
-	  			<b>Senast inloggad</b>
+	  			<b>Last login</b>
 	  			</td>
 	  			<td>
-	  			<b>Förnamn</b>
+	  			<b>First name</b>
 	  			</td>
 	  			<td>
-	  			<b>Efternamn</b>
+	  			<b>Last name</b>
 	  			</td>
 	  			<td ng-click="doSort('email')">
-	  			<b>Epost</b>
+	  			<b>Email</b>
 	  			</td>
 	  			<td>
-	  			<b>Rättigheter</b>
+	  			<b>Rights</b>
 	  			</td>
 	  			<td>
-	  			<b>Rapport</b>
+	  			<b>Report</b>
 	  			</td>
 	  		</tr>
 	  	</thead>
@@ -30,8 +30,8 @@
 	  			<td>{{ user.lname }}</td>
 	  			<td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
 	  			<td ng-switch on="user.isadmin">
-					<button ng-switch-when="true" ng-class="{disabled:user.isme}" class="btn btn-default btn-xs" ng-click="toggleAdmin(user)">Ta bort admin</button>
-					<button ng-switch-default class="btn btn-primary btn-xs" ng-click="toggleAdmin(user)">Gör admin</button>
+					<button ng-switch-when="true" ng-class="{disabled:user.isme}" class="btn btn-default btn-xs" ng-click="toggleAdmin(user)">Remove admin</button>
+					<button ng-switch-default class="btn btn-primary btn-xs" ng-click="toggleAdmin(user)">Make admin</button>
 	  			</td>
 	  			<td><a href="#/adminreport/{{ user._id }}" class="btn btn-primary btn-xs">Report</a></td>
 	  		</tr>

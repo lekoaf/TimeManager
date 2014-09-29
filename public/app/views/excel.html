@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-body">
   	<div id="excelbody">
-  	<h4>Typ av rapport:</h4>
+  	<h4>Type of report:</h4>
 	  <label class="radio-inline">
 	    <input type="radio" name="type" class="exceltype" id="type1" value="blank" checked ng-model="report.type">
 	    Blank
@@ -13,14 +13,14 @@
 	<h4>Period:</h4>
 	  <label class="radio-inline">
 	    <input type="radio" name="period" class="excelperiod" id="period1" value="this" checked ng-model="report.period">
-	    Denna månaden
+	    This month
 	  </label>
 	  <label class="radio-inline">
 	    <input type="radio" name="period" class="excelperiod" id="period2" value="last" ng-model="report.period">
-	    Förra månaden
+	    Last month
 	  </label>
 	  <br/>
-	  <button class="btn btn-primary btn-block" ng-click="getExcelReport(report)">Ladda ner</button>
+	  <button class="btn btn-primary btn-block" ng-click="getExcelReport(report)">Download</button>
 	</div>
   </div>
 </div>
