@@ -1,8 +1,8 @@
 (function (){
 
 	angular.module('timeManager')
-	.controller('monthController', ['$scope', '$log', '$http', '$routeParams', 
-		function ($scope, $log, $http, $routeParams){
+	.controller('monthController', ['$scope', '$log', '$routeParams', 'ajaxFactory', 
+		function ($scope, $log, $routeParams, ajaxFactory){
 		$scope.sortBy = '-date';
 		$scope.month = [];
 		$scope.total = 0;
@@ -35,11 +35,11 @@
 		    }
 		}
 
-		$http.get('/getmonth/' + $routeParams.m).success(function (data){
+		ajaxFactory.getGetMonth($routeParams.m).success(function (data){
 			$log.log(data);
 			convertTimes(data);
 		}).error(function (data, status, header, config){
-			$scope.error = data.error;
+			$log.log(data);
 		});
 	}]);
 })();

@@ -1,8 +1,8 @@
 (function (){
 
 	angular.module('timeManager')
-	.controller('adminReportController', ['$scope', '$log', '$http', '$routeParams', 
-		function ($scope, $log, $http, $routeParams){
+	.controller('adminReportController', ['$scope', '$log', '$routeParams', 'ajaxFactory', 
+		function ($scope, $log, $routeParams, ajaxFactory){
 		$scope.sortBy = '-date';
 		$scope.month = [];
 		$scope.total = 0;
@@ -37,7 +37,7 @@
 		    }
 		}
 
-		$http.get('/adminreport/' + $routeParams.uid).success(function (data){
+		ajaxFactory.getAdminReport($routeParams.uid).success(function (data){
 			$log.log(data);
 			convertTimes(data.tidtabell);
 
@@ -47,9 +47,8 @@
 			else{
 				$scope.reportName = data.user.email;
 			}
-
 		}).error(function (data, status, header, config){
-			$scope.error = data.error;
+			$log.log(data);
 		});
 	}]);
 })();

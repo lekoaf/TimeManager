@@ -1,8 +1,8 @@
 (function (){
 
 	angular.module('timeManager')
-	.controller('navbarController', ['$scope', '$location', '$http', '$log', 
-		function ($scope, $location, $http, $log){
+	.controller('navbarController', ['$scope', '$location', '$log', 
+		function ($scope, $location, $log){
 
 		// $scope.isadmin = false;
 
@@ -21,23 +21,5 @@
 	    		return true;	
 	    	}
 	    }
-
-	    var isAdmin = function (){
-	    	$log.log("Hej hopp");
-	    	// $http.get('/checkUser').success(function (user){
-    		// 	$scope.isadmin = user.isadmin;
-    		// }).error(function (data, status, header, config){
-    		// 	$log.log(data);
-    		// });
-
-   			//  $http.get('/checktoday').success(function (data){
-			// 	$log.log(data);
-			// 	$scope.total = data.tot;
-			// }).error(function (data, status, header, config){
-			// 	$log.log(data);
-			// });
-	    }
-
 	}]);
-
 })();

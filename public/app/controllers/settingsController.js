@@ -1,35 +1,27 @@
 (function (){
 
 	angular.module('timeManager')
-	.controller('settingsController', ['$scope', '$log', '$http', 
-		function ($scope, $log, $http){
+	.controller('settingsController', ['$scope', '$log', 'ajaxFactory', 
+		function ($scope, $log, ajaxFactory){
 		$scope.settings = {};
 
 		$scope.setSettings = function (settings){
-			$http.put('/settings', settings).success(function (data){
-				
+			ajaxFactory.putSettings(settings).success(function (data){
 				$log.log(data);
-
 			}).error(function (data, status, header, config){
-
 				$log.log(data);
-
 			});
 		}
 
 		var getSettings = function (){
-			$http.get('/settings').success(function (data){
-			
+			ajaxFactory.getSettings().success(function (data){
 				$scope.settings = data;
-
-			}).error(function (data, status, header, config){
-
 				$log.log(data);
-
+			}).error(function (data, status, header, config){
+				$log.log(data);
 			});
 		}
 
 		getSettings();
-
 	}]);
 })();

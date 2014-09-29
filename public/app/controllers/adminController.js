@@ -1,8 +1,8 @@
 (function (){
 
 	angular.module('timeManager')
-	.controller('adminController', ['$scope', '$log', '$http', 
-		function ($scope, $log, $http){
+	.controller('adminController', ['$scope', '$log', 'ajaxFactory', 
+		function ($scope, $log, ajaxFactory){
 
 		$scope.users = [];
 		$scope.sortBy = '-statistics.lastlogin';
@@ -20,7 +20,7 @@
 				type = 'rm';
 			}
 
-			$http.put('/adminpermission/'+user._id+'/'+type).success(function (data){
+			ajaxFactory.putAdminPermission(user._id, type).success(function (data){
 				$log.log(data);
 				getUsers();
 			}).error(function (data, status, header, config){
@@ -29,7 +29,7 @@
 		};
 		
 		var getUsers = function (){
-			$http.get('/adminusers').success(function (users){
+			ajaxFactory.getAdminUsers().success(function (users){
 				$log.log(users);
 				$scope.users = users;
 			}).error(function (data, status, header, config){

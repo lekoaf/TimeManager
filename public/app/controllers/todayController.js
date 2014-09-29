@@ -1,8 +1,8 @@
 (function (){
 
 	angular.module('timeManager')
-	.controller('todayController', ['$scope', '$log', '$http', 
-		function ($scope, $log, $http){
+	.controller('todayController', ['$scope', '$log', 'ajaxFactory', 
+		function ($scope, $log, ajaxFactory){
 		$scope.total = {};
 
 		$scope.calculateToday = function (time){
@@ -28,7 +28,8 @@
 	            tot: tot
 	        };
 
-	        $http.post('/today', today).success(function (data){
+	        ajaxFactory.postToday(today).success(function (data){
+	        	$log.log(data);
 	        	checkToday();
 	        }).error(function (data, status, header, config){
 	        	$log.log(data);
@@ -36,7 +37,8 @@
 		};
 
 		var checkToday = function (){
-			$http.get('/checktoday').success(function (data){
+
+			ajaxFactory.getCheckToday().success(function (data){
 				$log.log(data);
 				$scope.total = data.tot;
 			}).error(function (data, status, header, config){
