@@ -3,7 +3,7 @@
 	angular.module('timeManager')
 	.controller('monthController', ['$scope', '$log', '$routeParams', 'ajaxFactory', 
 		function ($scope, $log, $routeParams, ajaxFactory){
-		$scope.itemsPerPage = 4;
+		$scope.itemsPerPage = 16;
 		$scope.currentPage = 0;
 		$scope.sortBy = '-date';
 		$scope.month = [];
