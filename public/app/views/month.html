@@ -21,7 +21,7 @@
 	  		</tr>
 	  	</thead>
 	  	<tbody>
-	  	<tr ng-repeat="day in month | orderBy:sortBy:reverse">
+	  	<tr ng-repeat="day in month | orderBy:sortBy:reverse | paginationFilter: currentPage*itemsPerPage | limitTo: itemsPerPage">
 			<td><b>{{ day.date | date: 'yyyy-MM-dd' }}</b></td>
 			<td>{{ day.inh }}.{{ day.inm }} </td>
 			<td>{{ day.lunch }} </td>
@@ -36,6 +36,23 @@
 	  		<td><b>{{ total }}</b></td>
 	  	</tr>
 	  </tbody>
+	  <tfoot>
+		<td colspan="5">
+			<div >
+				<ul class="pagination">
+					<li ng-class="prevPageDisabled()">
+					<a href ng-click="prevPage()">« Prev</a>
+					</li>
+					<li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+					<a href="">{{n+1}}</a>
+					</li>
+					<li ng-class="nextPageDisabled()">
+					<a href ng-click="nextPage()">Next »</a>
+					</li>
+				</ul>
+			</div>
+		</td>
+		</tfoot>
 	  </table>
   </div>
 </div>
