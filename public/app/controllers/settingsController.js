@@ -7,9 +7,9 @@
 
 		$scope.setSettings = function (settings){
 			ajaxFactory.putSettings(settings).success(function (data){
-				$log.log(data);
+				sweetAlert("Excellent!", "Thanks for providing info.", "success");
 			}).error(function (data, status, header, config){
-				$log.log(data);
+				sweetAlert("Oops...", data.error, "error");
 			});
 		}
 

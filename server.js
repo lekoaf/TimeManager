@@ -70,20 +70,13 @@ app.post('/signup', function (req, res){
 
 	if (!req.body || !req.body.email || !req.body.password){
 		console.log('no/wrong body');
-		return res.send(400);
+		return res.status(400).json({error: 'No username/password entered!'});
 	}
-	
-	//if (!validation.email(req.body.email)){
-	//	console.log('invalid email');
-	//	return res.send(400);
-	//}
-	
+		
 	// Validate email and password
-	// Perhaps seperate them for better error handling messages?
 	if (!validation.email(req.body.email) || !validation.pw(req.body.password)){
 		console.log('Invalid email or password');
-		//return res.send(400);
-		return res.json(400, {error:"Ogiltig epost eller lösenord"});
+		return res.status(400).json({error: 'Invalid username/password!'});
 	}
 
 	var newUser = new User({
@@ -107,20 +100,13 @@ app.post('/login', function (req, res){
 	console.log('post /login');
 
 	if (!req.body || !req.body.email || !req.body.password){
-		return res.send(400);
+		return res.status(400).json({error: 'No username/password entered!'});
 	}
-
-	//if (!validation.email(req.body.email)){
-	//	return res.send(400);
-	//}
 
 	//Validate email and password
 	if (!validation.email(req.body.email) || !validation.pw(req.body.password)){
-		return res.send(400);
-		//return res.json(400, {error:"blubbblubb"});
+		return res.status(400).json({error: 'Invalid username/password!'});
 	}
-
-	var pw = pwhash.sha1(req.body.email+salt+req.body.password);
 
 	User.findOne({email: req.body.email}, function (err, user){
 		if (err){
@@ -128,12 +114,13 @@ app.post('/login', function (req, res){
 			return res.send(500);
 		}
 		if (!user){
-			return res.json(400, {error:"No such user"});
-			return res.send(400);
+			return res.json(400, {error:"Faulty username/password"});
 		}
+
+		var pw = pwhash.sha1(req.body.email+salt+req.body.password);
+
 		if (user.password !== pw){
 			return res.json(400, {error:"Faulty username/password"});
-			return res.send(400);
 		}
 
 		user.statistics.numlogins++;
@@ -155,35 +142,14 @@ app.post('/login', function (req, res){
 			req.session.isadmin = false;
 		}
 		
-
 		return res.json({isadmin:req.session.isadmin});
-	});
-});
-
-app.get('/checkUser', function (req, res){
-	if (!req.session && !req.session.uid){
-		return res.send(400);
-	}
-
-	User.findOne({_id: req.session.uid}, {isadmin: 1}, function (err, user){
-		if (err){
-			console.log(err);
-			return res.send(500);
-		}
-
-		if (!user){
-			return res.json({isadmin: false});
-		}
-
-		return res.json({isadmin: user.isadmin});
-
 	});
 });
 
 app.delete('/login', function (req, res){
 	console.log('delete /login');
 
-	if (!req.session && !req.session.uid){
+	if (!req.session || !req.session.uid){
 		return res.send(400);
 	}
 
@@ -198,7 +164,7 @@ app.delete('/login', function (req, res){
 app.get('/settings', function (req, res){
 	console.log('get /settings');
 
-	if (!req.session && !req.session.uid){
+	if (!req.session || !req.session.uid){
 		return res.send(400);
 	}
 
@@ -214,12 +180,11 @@ app.get('/settings', function (req, res){
 app.put('/settings', function (req, res){
 	console.log('put /settings');
 
-	// Need to check the entire body. lname, fname.
-	if (!req.body){
-		return res.send(400);
+	if (!req.body || !(req.body.fname || req.body.lname)){
+		return res.json(400, {error:"Nothing entered!"});
 	}
 
-	if (!req.session && !req.session.uid){
+	if (!req.session || !req.session.uid){
 		return res.send(400);
 	}
 
@@ -243,7 +208,7 @@ app.put('/settings', function (req, res){
 app.post('/today', function (req, res){
 	console.log('post /today');
 
-	if (!req.session && !req.session.uid){
+	if (!req.session || !req.session.uid){
 		return res.send(400);
 	}
 
@@ -275,7 +240,7 @@ app.post('/today', function (req, res){
 app.get('/checktoday', function (req, res){
 	console.log('get /checktoday');
 
-	if (!req.session && !req.session.uid){
+	if (!req.session || !req.session.uid){
 		return res.send(400);
 	}
 
@@ -298,7 +263,7 @@ app.get('/checktoday', function (req, res){
 app.get('/getmonth/:month', function (req, res){
 	console.log('get /getmonth/'+req.params.month);
 
-	if (!req.session && !req.session.uid){
+	if (!req.session || !req.session.uid){
 		return res.send(400);
 	}
 
@@ -322,7 +287,7 @@ app.get('/getmonth/:month', function (req, res){
 app.get('/excel/:type/:period', function (req, res){
 	console.log('get /excel/'+req.params.type+'/'+req.params.period);
 
-	if (!req.session && !req.session.uid){
+	if (!req.session || !req.session.uid){
 		return res.send(400);
 	}
 
