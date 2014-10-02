@@ -5,6 +5,12 @@
 		function ($scope, $location, $log, appSettings){
 		$scope.appSettings = appSettings;
 
+		$scope.isadmin = false;
+
+		$scope.$on('isadmin', function (e, isadmin){
+			$scope.isadmin = isadmin;
+		});
+
 		$scope.isActive = function (viewLocation) {
 	        return viewLocation === $location.path();
 	    };
