@@ -37,7 +37,7 @@
 	  	</tr>
 	  </tbody>
 	  <tfoot>
-		<td colspan="5">
+		<td colspan="4">
 			<div>
 				<ul class="pagination">
 					<li ng-class="prevPageDisabled()">
@@ -48,6 +48,9 @@
 					</li>
 					<li ng-class="nextPageDisabled()">
 					<a href ng-click="nextPage()">Next »</a>
+					</li>
+					<li ng-class="hideShowAll">
+					<a href ng-click="showAll()">Show All</a>
 					</li>
 				</ul>
 			</div>

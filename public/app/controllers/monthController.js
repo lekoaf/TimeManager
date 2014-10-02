@@ -1,13 +1,14 @@
 (function (){
 
 	angular.module('timeManager')
-	.controller('monthController', ['$scope', '$log', '$routeParams', 'ajaxFactory', 
-		function ($scope, $log, $routeParams, ajaxFactory){
+	.controller('monthController', ['$scope', '$log', '$routeParams', 'ajaxFactory', 'paginationFactory', 
+		function ($scope, $log, $routeParams, ajaxFactory, paginationFactory){
 		$scope.itemsPerPage = 16;
-		$scope.currentPage = 0;
+		$scope.currentPage = 0; // paginationFactory.getCurrentPage() ??
 		$scope.sortBy = '-date';
 		$scope.month = [];
 		$scope.total = 0;
+		$scope.hideShowAll = "active";
 
 		$scope.doSort = function(propName) {
            $scope.sortBy = propName;
@@ -35,6 +36,8 @@
 
 		        $scope.month.push(d[i]);
 		    }
+
+		    $scope.hideShowAll = ($scope.month.length > $scope.itemsPerPage) ? "active" : "disabled";
 		}
 
 		$scope.range = function() {
@@ -81,6 +84,17 @@
 
 		$scope.setPage = function(n) {
 			$scope.currentPage = n;
+		};
+
+		// $scope.setPage = function (n){
+		// 	paginationFactory.setPage(n);
+		// };
+
+		$scope.showAll = function(){
+			if ($scope.hideShowAll !== 'disabled'){
+				$scope.itemsPerPage = $scope.month.length + 1;
+				$scope.hideShowAll = 'disabled';
+			}
 		};
 
 		ajaxFactory.getGetMonth($routeParams.m).success(function (data){
