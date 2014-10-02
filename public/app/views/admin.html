@@ -30,10 +30,10 @@
 	  			<td>{{ user.lname }}</td>
 	  			<td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
 	  			<td ng-switch on="user.isadmin">
-					<button ng-switch-when="true" ng-class="{disabled:user.isme}" class="btn btn-default btn-xs" ng-click="toggleAdmin(user)">Remove admin</button>
-					<button ng-switch-default class="btn btn-primary btn-xs" ng-click="toggleAdmin(user)">Make admin</button>
+					<button ng-switch-when="true" ng-class="{disabled:user.isme}" class="btn btn-primary btn-raised" ng-click="toggleAdmin(user)">Remove admin</button>
+					<button ng-switch-default class="btn btn-primary btn-raised" ng-click="toggleAdmin(user)">Make admin</button>
 	  			</td>
-	  			<td><a href="#/adminreport/{{ user._id }}" class="btn btn-primary btn-xs">Report</a></td>
+	  			<td><a href="#/adminreport/{{ user._id }}" class="btn btn-primary btn-raised">Report</a></td>
 	  		</tr>
 	  </tbody>
 	  </table>

@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-body">
-  	<div id="settingsbody">
+  	<div class="formbody">
 	  <div class="form-group">
 	    <label>First name</label>
 	    <input type="text" class="form-control" placeholder="First name" value="{{settings.fname}}" ng-model="settings.fname">
@@ -9,7 +9,7 @@
 	    <label>Last name</label>
 	    <input type="text" class="form-control" placeholder="Last name" value="{{settings.lname}}" ng-model="settings.lname">
 	  </div>
-	  <button class="btn btn-primary btn-block" ng-click="setSettings(settings)">Update</button>
+	  <button class="btn btn-primary btn-raised" ng-click="setSettings(settings)">Update</button>
 	  <div id="setfail"></div>
 	</div>
   </div>

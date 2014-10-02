@@ -4,6 +4,7 @@ body{
 	font-family: 'Exo', Arial, sans-serif;
 	font-weight: 400;
 	*/
+	background-color: #FFF !important;
 }
 #wrap, #time, #adminu, #admint{
 	max-width:800px;
@@ -25,8 +26,8 @@ body{
 .klart{
 	color:#00b139;
 }
-#excelbody, #settingsbody{
-	width:50%;
+.formbody{
+	width:75%;
 	margin:auto;
 }
 #adm{
